@@ -42,13 +42,13 @@
     <p>TylerAI uses published thresholds to assign eight permissionless Discord roles. Members may view the exact rules with <code>/awards catalog</code> and their own progress with <code>/awards me</code>. Server staff are excluded from community awards. There is no public leaderboard or public award announcement.</p>
 
     <h2>Historical scanning</h2>
-    <p>Historical message scanning is disabled by default. It may run only after the server posts a privacy notice, waits at least seven days, and obtains any approval required by Discord. If those conditions are not met, calculations begin with new activity. Historical voice activity is never scanned.</p>
+    <p>Historical message scanning is disabled by default. It may run only after the server posts a privacy notice, waits at least seven days, and obtains any approval required by Discord. If those conditions are not met, calculations begin with new activity. Historical voice activity is never scanned. At finalization, older per-member bootstrap data outside the ordinary 45-day live-retention limit is deleted or converted to anonymous server totals; recent activity may remain only within that same 45-day limit. If a safety circuit breaker blocks an award batch, TylerAI may retain only its month-level qualification result under a private keyed recovery hash—not a raw Discord account identifier—for no more than 30 days. That limited proof exists solely so staff can retry the blocked batch and is deleted sooner after recovery or a member’s privacy-deletion request.</p>
 
     <h2>Retention and security</h2>
     <ul>
       <li>A content-free message index is retained for no more than 48 hours.</li>
-      <li>Per-member metrics and hashed deduplication or reaction evidence are retained for no more than 45 days.</li>
-      <li>Daily SQLite backups are stored on the operator’s Windows host and rotate out after seven days.</li>
+      <li>For ordinary live collection, per-member metrics and hashed deduplication or reaction evidence are retained for no more than 45 days. During an approved historical scan, older bootstrap aggregates exist only until assignment and scan finalization, then are deleted or converted to anonymous server totals; canceled scans are rolled back. The narrowly limited keyed recovery proof described above expires within 30 days and is removed from retained backups before their own expiration could extend that limit.</li>
+      <li>Daily SQLite backups are sanitized so they do not extend the live-data limits above, stored on the operator’s Windows host, and removed no later than seven days after creation.</li>
       <li>Older reporting is anonymous and server-level. Audit entries are anonymized when a member deletes their data.</li>
       <li>Logs exclude message content, attachment data, credentials, and raw user identifiers.</li>
     </ul>
