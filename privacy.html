@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TylerAI Habit Awards — Privacy Policy</title>
+  <title>TylerAI Role System — Privacy Policy</title>
   <style>
     :root { color-scheme: dark; --bg: #10131a; --card: #191e29; --text: #f1f4fa; --muted: #b6c0d4; --accent: #78a9ff; }
     * { box-sizing: border-box; }
@@ -22,50 +22,47 @@
 <body>
 <main>
   <article>
-    <p class="meta">Effective July 25, 2026</p>
-    <h1>TylerAI Habit Awards Privacy Policy</h1>
-    <p>TylerAI recognizes positive, measurable participation in one Discord community. It does not use an AI model to judge personalities, relationships, or message meaning.</p>
+    <p class="meta">Effective July 26, 2026</p>
+    <h1>TylerAI Role System Privacy Policy</h1>
+    <p>TylerAI operates in role-only mode for one Discord community. It maintains basic and tenure roles and lets members choose five alert or interest roles. It does not scan messages, reactions, attachments, or voice activity, and it does not use AI to profile members.</p>
 
     <h2>What the bot processes</h2>
     <ul>
-      <li>Discord account, server, channel, role, message, reply, reaction, and event identifiers needed to calculate and maintain awards.</li>
-      <li>Message timestamps, the number of non-whitespace characters, whether a message appears to be a command or recent duplicate, and whether it has attachments.</li>
-      <li>Reply relationships and aggregate non-self reaction counts. Raw reaction-user identities are used transiently to deduplicate and exclude bots, nonmembers, and self-reactions, then discarded; a private keyed hash may be retained temporarily as deduplication evidence.</li>
-      <li>Voice-state timestamps used to count eligible minutes when at least two human members are present. TylerAI never records or processes voice audio.</li>
-      <li>A member’s award status, progress totals, privacy choice, and optional notification preference.</li>
+      <li>Discord server, user, role, channel, and panel-message identifiers needed to maintain roles.</li>
+      <li>Whether an account is a bot, whether membership screening is complete, the current server join timestamp, and the member’s current role IDs.</li>
+      <li>Button and select-menu submissions used immediately to replace only the five member-selectable roles.</li>
+      <li>Content-free operational audits recording a role action, outcome, reason, and time.</li>
     </ul>
 
     <h2>What the bot does not keep</h2>
-    <p>Message text is inspected transiently for the limited checks above and is never written to TylerAI’s database, backups, or logs. Attachments are never downloaded or inspected, and attachment URLs are not stored. The service does not store AI prompts, direct messages, or activity from private, NSFW, archive, log, or restricted channels. Staff never receive community award roles; their qualifying messages and support replies also produce private staff summaries, while human replies or reactions may contribute to another member’s structural award evidence.</p>
+    <p>TylerAI does not subscribe to message, reaction, attachment, or voice events in role-only mode. It does not inspect or store message text, attachment files or URLs, voice audio, AI prompts, direct messages, behavioral metrics, or a separate profile of a member’s panel choices.</p>
 
-    <h2>Purpose and award decisions</h2>
-    <p>TylerAI uses published thresholds to assign eight permissionless Discord roles. Members may view the exact rules with <code>/awards catalog</code> and their own progress with <code>/awards me</code>. Server staff are excluded from community awards. There is no public leaderboard or public award announcement.</p>
+    <h2>Role decisions</h2>
+    <p>TylerAI gives the existing <code>Member</code> role to screened human members and a permissionless <code>Veteran</code> role when the current Discord join timestamp reaches its first calendar anniversary. Rejoining resets the join timestamp available to the bot. Members use <code>/awards roles</code> or the private selector in <code>🤖choose-roles</code> to choose Stream Alerts, Event Alerts, Community Updates, Looking to Play, and Creator Collabs. Submitting the selector replaces only those five roles.</p>
 
-    <h2>Historical scanning</h2>
-    <p>Historical message scanning is disabled by default. It may run only after the server posts a privacy notice, waits at least seven days, and obtains any approval required by Discord. If those conditions are not met, calculations begin with new activity. Historical voice activity is never scanned. At finalization, older per-member bootstrap data outside the ordinary 45-day live-retention limit is deleted or converted to anonymous server totals; recent activity may remain only within that same 45-day limit. If a safety circuit breaker blocks an award batch, TylerAI may retain only its month-level qualification result under a private keyed recovery hash—not a raw Discord account identifier—for no more than 30 days. That limited proof exists solely so staff can retry the blocked batch and is deleted sooner after recovery or a member’s privacy-deletion request.</p>
+    <h2>Activity features are sealed</h2>
+    <p>The eight habit awards, activity-based VIP selection, historical scanning, and all new behavioral collection are dormant. They cannot be activated by the ordinary pause command. Activation requires written Discord authorization for the exact use, updated published policies, a versioned server notice, and another seven-day opt-out window.</p>
 
     <h2>Retention and security</h2>
     <ul>
-      <li>A content-free message index is retained for no more than 48 hours.</li>
-      <li>For ordinary live collection, per-member metrics and hashed deduplication or reaction evidence are retained for no more than 45 days. During an approved historical scan, older bootstrap aggregates exist only until assignment and scan finalization, then are deleted or converted to anonymous server totals; canceled scans are rolled back. The narrowly limited keyed recovery proof described above expires within 30 days and is removed from retained backups before their own expiration could extend that limit.</li>
-      <li>Daily SQLite backups are sanitized so they do not extend the live-data limits above, stored on the operator’s Windows host, and removed no later than seven days after creation.</li>
-      <li>Older reporting is anonymous and server-level. Audit entries are anonymized when a member deletes their data.</li>
-      <li>Logs exclude message content, attachment data, credentials, and raw user identifiers.</li>
+      <li>Role configuration, registered Discord role IDs, panel state, resumable operation cursors, and content-free role audits are stored on the operator’s Windows host.</li>
+      <li>Before the approved legacy-role reset, TylerAI stores an AES-256-GCM encrypted restoration snapshot containing the affected role definitions, assignments, hierarchy, and channel overwrites. It is derived from the private installation secret and deleted after seven days.</li>
+      <li>Daily SQLite backups rotate after seven days.</li>
+      <li>Logs exclude messages, attachments, credentials, AI prompts, and behavioral profiles.</li>
     </ul>
 
     <h2>Your choices</h2>
     <ul>
-      <li><code>/awards privacy action:status</code> explains your current participation state.</li>
-      <li><code>/awards privacy action:opt-out</code> stops collection and removes TylerAI award roles.</li>
-      <li><code>/awards privacy action:delete</code> deletes your active metrics, evidence, preferences, and awards and anonymizes audit history. Rotating backups age out within seven days.</li>
-      <li><code>/awards notifications enabled:true</code> explicitly opts in to private award messages. They are off by default.</li>
+      <li><code>/awards roles</code> shows current opt-ins and opens the private selector. Selecting nothing clears all five optional roles.</li>
+      <li><code>/awards privacy action:status</code> reports whether any legacy activity data remains.</li>
+      <li><code>/awards privacy action:delete</code> deletes legacy metrics, evidence, preferences, and awards and anonymizes historical audit entries. Rotating backups age out within seven days.</li>
     </ul>
 
     <h2>Sharing and service providers</h2>
-    <p>TylerAI does not sell member data or use it for advertising. Data is exchanged with Discord only as needed to operate the bot and is stored on the community operator’s Windows host. No AI provider receives activity data. Discord processes information under its own <a href="https://discord.com/privacy">Privacy Policy</a>.</p>
+    <p>TylerAI does not sell member data or use it for advertising. Data is exchanged with Discord only as needed to maintain server roles and is stored on the community operator’s Windows host. No AI provider receives member data. Discord processes information under its own <a href="https://discord.com/privacy">Privacy Policy</a>.</p>
 
     <h2>Questions or changes</h2>
-    <p>Contact the server administrators through the Discord server for privacy questions or requests that cannot be completed with the commands above. Material policy changes will be announced in the server before they take effect. Collection can be paused by an administrator at any time.</p>
+    <p>Contact the server administrators through the Discord server for privacy questions or requests that cannot be completed with the commands above. Material policy changes will be announced before they take effect. Behavioral processing remains sealed unless every activation condition above is met.</p>
 
     <p><a href="./terms.html">Read the TylerAI Terms of Use</a></p>
   </article>
