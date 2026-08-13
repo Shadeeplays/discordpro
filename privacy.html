@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TylerAI Role System — Privacy Policy</title>
+  <title>TylerAI Community Analytics &amp; Role System — Privacy Policy</title>
   <style>
     :root { color-scheme: dark; --bg: #10131a; --card: #191e29; --text: #f1f4fa; --muted: #b6c0d4; --accent: #78a9ff; }
     * { box-sizing: border-box; }
@@ -22,50 +22,71 @@
 <body>
 <main>
   <article>
-    <p class="meta">Effective July 26, 2026</p>
-    <h1>TylerAI Role System Privacy Policy</h1>
-    <p>TylerAI operates in role-only mode for one Discord community. It maintains basic and tenure roles and lets members choose five alert or interest roles. It does not scan messages, reactions, attachments, or voice activity, and it does not use AI to profile members.</p>
+    <p class="meta">Version 2 — Published August 13, 2026</p>
+    <h1>TylerAI Community Analytics &amp; Role System Privacy Policy</h1>
+    <p>TylerAI operates for one Discord community. It maintains basic, tenure, and member-selected roles. The server operator has also announced a limited historical analytics sweep to understand Discord participation and tenure and to design possible community-recognition roles.</p>
+    <p><strong>Collection is pending.</strong> The analytics sweep will not begin until the exact written Discord authorization covering this member-level historical use is recorded, the updated policy is live, and a versioned server notice has completed a full seven-day opt-out period.</p>
 
-    <h2>What the bot processes</h2>
+    <h2>Purpose and decisions</h2>
+    <p>The sweep is limited to community participation, loyalty, and Discord-based stream-engagement signals. Discord chat cannot establish actual Twitch attendance; using Twitch attendance data would require a separately disclosed source and measurement plan. Collection itself does not create, assign, remove, or recommend moderation actions. Any later activity-role program requires administrator review and a separate announcement before activation.</p>
+
+    <h2>Data included in the announced sweep</h2>
     <ul>
-      <li>Discord server, user, role, channel, and panel-message identifiers needed to maintain roles.</li>
-      <li>Whether an account is a bot, whether membership screening is complete, the current server join timestamp, and the member’s current role IDs.</li>
-      <li>Button and select-menu submissions used immediately to replace only the five member-selectable roles.</li>
-      <li>Content-free operational audits recording a role action, outcome, reason, and time.</li>
+      <li>A current server-member snapshot: Discord user ID, username and display names, bot status, server join date, account creation date, current role IDs, and current or departed membership status.</li>
+      <li>Readable channel and public-thread identifiers, names, types, parent relationships, archived state, and collection coverage.</li>
+      <li>Message text and metadata, including author, channel, creation or edit time, message type, reply references, and content length.</li>
+      <li>Attachment counts and general content types, such as <code>image/png</code>. TylerAI does not download or store attachment files or attachment URLs.</li>
+      <li>Emoji reaction totals and the Discord user IDs of non-bot members who reacted.</li>
+      <li>Content-free checkpoints, errors, and coverage records needed to verify completeness and resume safely.</li>
     </ul>
+    <p>The scope includes readable text and announcement channels, public threads, and text posts associated with voice or stage channels. A pre-existing partial legacy message archive may be imported only under the same authorization, notice, security, retention, and member-choice controls.</p>
 
-    <h2>What the bot does not keep</h2>
-    <p>TylerAI does not subscribe to message, reaction, attachment, or voice events in role-only mode. It does not inspect or store message text, attachment files or URLs, voice audio, AI prompts, direct messages, behavioral metrics, or a separate profile of a member’s panel choices.</p>
+    <h2>Data excluded</h2>
+    <ul>
+      <li>Direct messages and private threads.</li>
+      <li>Age-restricted or NSFW channels and threads.</li>
+      <li>Channels or history TylerAI cannot view and read.</li>
+      <li>Voice audio, video, screen sharing, presence time, and call attendance.</li>
+      <li>Attachment files and URLs.</li>
+      <li>Protected-characteristic or sensitive-trait inferences.</li>
+    </ul>
+    <p>Forum and media containers are not messages, but their readable public threads may be included. Inaccessible history is reported as unknown and is never treated as member inactivity.</p>
 
     <h2>Role decisions</h2>
     <p>TylerAI gives the existing <code>Member</code> role to screened human members and a permissionless <code>Veteran</code> role when the current Discord join timestamp reaches its first calendar anniversary. Rejoining resets the join timestamp available to the bot. Members use <code>/awards roles</code> or the private selector in <code>🤖choose-roles</code> to choose Stream Alerts, Event Alerts, Community Updates, Looking to Play, and Creator Collabs. Submitting the selector replaces only those five roles.</p>
 
-    <h2>Activity features are sealed</h2>
-    <p>The eight habit awards, activity-based VIP selection, historical scanning, and all new behavioral collection are dormant. They cannot be activated by the ordinary pause command. Activation requires written Discord authorization for the exact use, updated published policies, a versioned server notice, and another seven-day opt-out window.</p>
-
     <h2>Retention and security</h2>
     <ul>
-      <li>Role configuration, registered Discord role IDs, panel state, resumable operation cursors, and content-free role audits are stored on the operator’s Windows host.</li>
-      <li>Before the approved legacy-role reset, TylerAI stores an AES-256-GCM encrypted restoration snapshot containing the affected role definitions, assignments, hierarchy, and channel overwrites. It is derived from the private installation secret and deleted after seven days.</li>
+      <li>The analytics database is stored in an encrypted Windows account directory on the operator-controlled host.</li>
+      <li>Each stored message body is additionally encrypted with AES-256-GCM and authenticated against its server, channel, and message identity.</li>
+      <li>Encrypted message bodies are deleted no later than 30 days after first collection. Repeated sweeps cannot extend that deadline.</li>
+      <li>Identifiable message metadata, member records, reaction identifiers, and derived outputs are kept only while needed for the disclosed one-time analysis and role-design review, then deleted or de-identified. Valid deletion requests are processed earlier.</li>
+      <li>If a channel becomes private, NSFW, inaccessible, deleted, or otherwise out of scope, its active analytics rows are removed on reconciliation.</li>
       <li>Daily SQLite backups rotate after seven days.</li>
-      <li>Logs exclude messages, attachments, credentials, AI prompts, and behavioral profiles.</li>
+      <li>Operational logs exclude message text, attachment details, credentials, and raw analytics profiles.</li>
     </ul>
+
+    <h2>Local analysis and AI</h2>
+    <p>Raw message text is analyzed locally and is not sent to OpenAI or another AI provider. An AI assistant may receive only aggregate or de-identified findings that cannot reasonably identify a member, for the limited purpose of helping the operator review data quality and possible role designs. TylerAI does not use Discord content to train or fine-tune a model. Sending raw or identifiable Discord analytics to an AI provider would require a new policy, a new server notice, and any additional Discord authorization required for that change.</p>
 
     <h2>Your choices</h2>
     <ul>
       <li><code>/awards roles</code> shows current opt-ins and opens the private selector. Selecting nothing clears all five optional roles.</li>
-      <li><code>/awards privacy action:status</code> reports whether any legacy activity data remains.</li>
-      <li><code>/awards privacy action:delete</code> deletes legacy metrics, evidence, preferences, and awards and anonymizes historical audit entries. Rotating backups age out within seven days.</li>
+      <li><code>/awards privacy action:opt-out</code> excludes a member from collection and requests removal of their identifiable analytics. Members may opt out before or after the sweep.</li>
+      <li><code>/awards privacy action:status</code> reports whether TylerAI has identifiable analytics for the requesting member without revealing message content.</li>
+      <li><code>/awards privacy action:delete</code> deletes the requesting member’s identifiable TylerAI analytics and legacy metrics, removes their reactor identity, and anonymizes historical audit entries. Anonymous aggregates and rotating backups may remain until their normal expiry.</li>
+      <li>Members may contact a server administrator to request access, correction, deletion, or confirmation that cleanup completed.</li>
     </ul>
 
     <h2>Sharing and service providers</h2>
-    <p>TylerAI does not sell member data or use it for advertising. Data is exchanged with Discord only as needed to maintain server roles and is stored on the community operator’s Windows host. No AI provider receives member data. Discord processes information under its own <a href="https://discord.com/privacy">Privacy Policy</a>.</p>
+    <p>TylerAI does not sell Discord data, use it for advertising, or share it with data brokers. Discord provides the source data under its own <a href="https://discord.com/privacy">Privacy Policy</a>. Raw and identifiable analytics remain on the operator-controlled host and are not shared with an AI provider. Data may otherwise be disclosed only when legally required or necessary to secure and operate the service.</p>
 
     <h2>Questions or changes</h2>
-    <p>Contact the server administrators through the Discord server for privacy questions or requests that cannot be completed with the commands above. Material policy changes will be announced before they take effect. Behavioral processing remains sealed unless every activation condition above is met.</p>
+    <p>Contact the server administrators through the Discord server. Material expansions—such as continuous monitoring, a Twitch data source, raw-content processing by a third party, or automatic activity-role assignment—will receive a new policy update and server notice before activation. Identifiable Discord data will be deleted when it is no longer necessary, when the service ends, or when Discord or the applicable member validly requests deletion.</p>
 
     <p><a href="./terms.html">Read the TylerAI Terms of Use</a></p>
   </article>
 </main>
 </body>
 </html>
+
